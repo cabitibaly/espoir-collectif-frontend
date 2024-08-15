@@ -1,0 +1,40 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+* {
+  font-family: "Nunito Sans", sans-serif;
+}
+
+.nav {
+  @apply w-5/6 bg-white drop-shadow-md p-4 z-50 fixed mx-auto inset-x-0 top-5 rounded-full flex items-start justify-between max-1250:w-4/5;
+}
+
+.nav-full-width {
+  @apply w-full bg-white py-4 px-8 z-50 top-0 flex items-center justify-between;
+}
+
+.nav-items {
+  @apply text-lg text-dark transition duration-200 ease-out py-1 px-2 rounded-lg hover:bg-gray-300;
+}
+
+.nav-top {
+  @apply top-0 left-0 w-full rounded-none;
+}
+
+.nav-top-1090 {
+  @apply max-1090:top-0 max-1090:left-0 max-1090:w-full max-1090:rounded-none;
+}
+
+.nav-items-1250 {
+  @apply max-1250:text-sm;
+}
+
+.logo {
+  @apply text-2xl font-extrabold text-green-800 transition duration-150 ease-in hover:scale-95;
+}
+
+.logo-1250 {
+  @apply max-1250:text-lg;
+}
