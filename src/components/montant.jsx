@@ -1,14 +1,67 @@
-import hospital from '../assets/image/hospital.jpg';
-import { useState } from "react";
-
+import { useEffect, useState } from "react";
+import { useParams, useNavigate } from "react-router-dom";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Montant = () => {
-    const [montant, setMontant] = useState(0);
+    const [montant, setMontant] = useState('');
     const [email, setEmail] = useState('');
     const [nom, setNom] = useState('Anonyme');
     const [message, setmessage] = useState('');
+    const [cagnotte, setCagnotte] = useState({});
+    const navigate = useNavigate();
+    const { id } = useParams();
 
-    console.log(email, nom, message)
+    console.log(montant)
+
+    const getCagnotte = async () => {
+        const res = await fetch('http://127.0.0.1:8000/api/cagnottes/'+id, {
+            method: 'GET',
+            headers: {
+                'Content-Type' : 'application/json',
+                'Authorization': `Token ${localStorage.getItem('token')}`
+            },
+        });
+        const data = await res.json();
+        if(data.status == 200) {
+            setCagnotte(data.cagnotte);
+        } else {
+            window.location.reload();
+        }
+    }
+
+    useEffect(() => {        
+        getCagnotte();
+    }, []);
+
+    const soutenir = async (e) => {
+        e.preventDefault();
+        const res = await fetch('http://127.0.0.1:8000/api/faire_don/'+id, {
+            method: 'POST',
+            headers: {
+                'Content-Type' : 'application/json',
+                'Authorization': `Token ${localStorage.getItem('token')}`
+            },
+            body: JSON.stringify({
+                id,
+                montant,
+                nom,
+                email,
+                message
+            })
+        });
+        const data = await res.json();
+        console.log(data);
+        if(data.status == 201) {
+            toast.success(data.message);
+            setTimeout(() => {
+                navigate('/cagnote/detail/'+id)
+            }, 1000);
+        } else {
+            toast.error(data.message);
+            navigate('/cagnote/soutenir/'+id);
+        }
+    }
 
     const handleChange = (e, set) => {
         set(e.target.value);
@@ -21,15 +74,16 @@ const Montant = () => {
     return (
         <>
             <section className="w-full h-auto p-4 bg-pear flex item-center justify-center">
+                <ToastContainer />
                 <div className="w-3/6 bg-white rounded-xl p-4 flex items-center justify-start flex-col gap-4 max-1250:w-4/6 max-990:w-full">
                     <div className="p-4 w-full flex gap-2">
-                        <img src={hospital} alt="hospital" className="w-2/6 h-full rounded-xl object-cover max-990:hidden" />
+                        <img src={`http://127.0.0.1:8000${cagnotte.image}`} alt="hospital" className="w-2/6 h-full rounded-xl object-cover max-990:hidden" />
                         <div className="w-4/6 flex items-start justify-center gap-2 flex-col p-2 max-990:w-full">
-                            <p className="font-medium text-left text-dark text-lg max-750:text-base max-400:text-sm">Vous soutenez <span className="font-bold text-xl text-black max-750:text-base max-400:text-sm">Une lumière au bout du tumel</span></p>
-                            <p className="font-normal text-left text-gray-600 text-lg max-750:text-base ax-400:text-sm">Votre don va aider <span className="font-bold text-xl text-gray-600 max-750:text-base ax-400:text-sm">Alison Smith</span></p>
+                            <p className="font-medium text-left text-dark text-lg max-750:text-base max-400:text-sm">Vous soutenez <span className="font-bold text-xl text-black max-750:text-base max-400:text-sm">{cagnotte.intitule}</span></p>
+                            <p className="font-normal text-left text-gray-600 text-lg max-750:text-base ax-400:text-sm">Votre don va aider <span className="font-bold text-xl text-gray-600 max-750:text-base ax-400:text-sm">{cagnotte.organisateur}</span></p>
                         </div>
                     </div>
-                    <form onSubmit={''} className="p-4 w-full flex items-start justify-center flex-col gap-4">
+                    <form onSubmit={soutenir} className="p-4 w-full flex items-start justify-center flex-col gap-4">
                         <span className="font-bold text-black text-base max-450:text-xs">Entrez le montant de votre don</span>
                         <div className="w-full flex flex-wrap items-start justify-center gap-4">
                             <button onClick={() => handleClick(1000)} className="border border-solid border-gray-400 w-24 h-16 max-450:w-20 max-450:h-14 max-450:text-lg flex items-center justify-center font-bold text-xl rounded-xl transition hover:bg-gray-100">

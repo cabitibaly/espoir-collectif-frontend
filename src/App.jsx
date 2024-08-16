@@ -23,7 +23,7 @@ function App() {
         <Route path="/comment-ça-marche" element={<Fonctionnement />} />
         <Route path="/a-propos" element={<APropos />} />
         <Route path="/creer-une-cagnote" element={<PublierCagnote />} />
-        <Route path="/cagnote/detail/id" element={<DetailCagnote />} />
+        <Route path="/cagnote/detail/:id" element={<DetailCagnote />} />
         <Route path="/singup" element={<Singup />} />
         <Route path="/login" element={<Login />} />
         <Route path="/recherche" element={<Recherche />} />
@@ -32,7 +32,7 @@ function App() {
         <Route path="/modifier-information" element={< UserModifier />} />
         <Route path="/justification/je-fais-une-justification" element={<FaireJustification />} />
         <Route path="/justification/all" element={<Justification />} />
-        <Route path="/cagnote/detail/id/soutenir" element={<Soutenir />} />
+        <Route path="/cagnote/soutenir/:id" element={<Soutenir />} />
       </Routes>
     </>
   )

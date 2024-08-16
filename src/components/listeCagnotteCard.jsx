@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { PropTypes } from "prop-types";
 
 const ListeCagnotteCard = ({urlCagnotte, img, motif}) => {
+    console.log('image: '+img);
     return (
         <div className="border border-solid border-gray-500 rounded-xl p-4 w-full flex items-center justify-center gap-2 max-650:flex-col">
             <img src={img} alt='hostpital' className="w-2/6 h-full object-cover rounded-lg max-650:w-full" />
