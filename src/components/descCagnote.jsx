@@ -1,9 +1,7 @@
 import { Link } from "react-router-dom";
 import { useEffect, useState } from 'react';
 import { useParams } from "react-router-dom";
-import { HandHeart } from 'lucide-react';
-// import hospital from '../assets/image/hospital.jpg'
-import profile from '../assets/image/profil.jpg'
+import { HandHeart, User } from 'lucide-react';
 import FroalaEditorView from "react-froala-wysiwyg/FroalaEditorView";
 import Dons from "./dons";
 
@@ -64,7 +62,9 @@ const DescCagnote = () => {
                             <Link to={'/cagnote/soutenir/'+id} className="w-full p-2 text-center text-lg font-semibold text-white bg-green-700 rounded-xl transition duration-300 ease-in-out hover:scale-95">Je soutiens</Link>
                         </div>
                         <div className='w-full flex items-center justify-start gap-2'>
-                            <img src={profile} alt='' className='rounded-full w-12 h-12 object-cover' />
+                            <div className={`border border-solid border-gray-300 w-9 h-9 rounded-full flex items-center justify-center transition duration-300 ease-in-out hover:border-green-600`}>
+                                <User size={25} color="black" strokeWidth={1} />
+                            </div>
                             <div className="font-normal text-dark text-lg max-750:text-base">{cagnotte.organisateur} organise cette cagnote</div>
                         </div>
                         <hr className='w-full h-0.5 bg-neutral-400' />
@@ -76,8 +76,8 @@ const DescCagnote = () => {
                         <div className='w-full pl-2 my-6 flex items-center justify-center flex-col gap-2'>
                             <span className='self-start font-bold text-xl text-neutral-950'>Organisateur</span>
                             <div className='w-full py-2 flex justify-start gap-4'>
-                                <div className='w-12 h-12 '>
-                                    <img src={profile} alt='' className='w-full h-12 rounded-full object-cover' />
+                                <div className={`border border-solid border-gray-300 w-9 h-9 rounded-full flex items-center justify-center transition duration-300 ease-in-out hover:border-green-600`}>
+                                    <User size={25} color="black" strokeWidth={1} />
                                 </div>
                                 <div className='w-full flex items-start justify-center flex-col'>
                                     <span className="font-bold text-dark text-lg">{cagnotte.organisateur}</span>
