@@ -33,7 +33,7 @@ const Cagnote = () => {
             <h4 className="self-start text-2xl text-dark font-bold">Collecte de fond urgente</h4>
             <div className="w-full grid grid-cols-2 items-center justify-center gap-4 max-750:flex max-750:flex-col lg:grid-cols-3 lg:w-full">
                 
-                {
+                { cagnottes.length > 0 ?
                     cagnottes.slice(0, 6).map((cagnotte, index) => (
                         <CagnoteCard 
                             key={index}
@@ -44,6 +44,10 @@ const Cagnote = () => {
                             montantRecolte={cagnotte.montant_collecte}
                         /> 
                     ))
+                    :
+                    <div className="w-full h-44 flex flex-col items-center justify-center">
+                        <h4 className="text-2xl text-dark font-bold">Aucune cagnotte à afficher</h4>
+                    </div>
                 }
 
             </div>
