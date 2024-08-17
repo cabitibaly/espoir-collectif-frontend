@@ -68,8 +68,7 @@ const UserInformation = () => {
                     </div>
                     <Link to='/modifier-information' className="w-full p-2 border border-solid border-gray-500 text-center font-semibold text-black bg-neutral-100 rounded-xl transition duration-300 ease-in-out hover:bg-gray-200">Modifier mes informations</Link>
                     <span className="font-bold mt-4 text-2xl text-black">Action</span>
-                    <Link to='/cagnotte/all' className="w-full p-2 border border-solid border-gray-500 text-center font-semibold text-black bg-neutral-100 rounded-xl transition duration-300 ease-in-out hover:bg-gray-200">Voir mes cagnottes</Link>
-                    <Link to='/justification/all' className="w-full p-2 border border-solid border-gray-500 text-center font-semibold text-black bg-neutral-100 rounded-xl transition duration-300 ease-in-out hover:bg-gray-200">Faire une justification</Link>
+                    <Link to='/cagnotte/all' className="w-full p-2 border border-solid border-gray-500 text-center font-semibold text-black bg-neutral-100 rounded-xl transition duration-300 ease-in-out hover:bg-gray-200">Voir mes cagnottes</Link>                    
                     <button onClick={logout} className="w-full p-2 border border-solid border-gray-500 text-center font-semibold text-black bg-neutral-100 rounded-xl transition duration-300 ease-in-out hover:bg-gray-200">Se déconnexion</button>
                 </div>
             </div>
