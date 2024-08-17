@@ -2,8 +2,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast, ToastContainer } from 'react-toastify';
 import 'froala-editor/css/froala_style.min.css';
-import 'froala-editor/css/froala_editor.pkgd.min.css';   
-import 'froala-editor/js/plugins/image.min.js';
+import 'froala-editor/css/froala_editor.pkgd.min.css';
 import 'froala-editor/js/plugins/lists.min.js';
 import 'froala-editor/js/plugins/font_family.min.js';
 import 'froala-editor/js/plugins/font_size.min.js';
@@ -108,7 +107,7 @@ const CreerCagnote = () => {
                             onModelChange={e => setDescription(e)}
                             tag='textarea'
                             config={{
-                                placeholderText:"writing your text here...",
+                                placeholderText:"Dites nous pourquoi vous organisez cette cagnotte...",
                                 height: editorHeight,
                                 saveInterval: 1000,
                                 events: {

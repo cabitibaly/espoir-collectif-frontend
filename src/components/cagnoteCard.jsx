@@ -21,7 +21,7 @@ CagnoteCard.propTypes = {
     image: PropTypes.string,
     titre: PropTypes.string,
     pourcentage: PropTypes.string,
-    montantRecolte: PropTypes.string,
+    montantRecolte: PropTypes.number,
 };
 
 export default CagnoteCard;
