@@ -83,7 +83,7 @@ const CreerCagnote = () => {
                                     <p className="mb-2 text-sm text-gray-500"><span className="font-semibold">Cliquez pour ajouter une photo</span></p>
                                     <p className="text-xs text-gray-500">PNG, JPG</p>
                                 </div>
-                                <input id="image" type="file" className="hidden" accept="image/*" onChange={(e) => handleChange(e)} />
+                                <input id="image" type="file" className="hidden" accept="image/*" onChange={(e) => handleChange(e)} required/>
                             </label> : 
                             <img src={image} className="w-full h-72 rounded-lg object-cover" />
                         }
@@ -92,12 +92,12 @@ const CreerCagnote = () => {
                     <hr className='w-full h-0.5 bg-gray-100' />
                     <div className="p-2 w-full">
                         <label htmlFor="intitule" className="block mb-2 text-base font-bold text-gray-900">intitule</label>
-                        <input onChange={e => setIntitule(e.target.value)} type="text" id="intitule" className="bg-gray-50 border border-gray-fill text-gray-900 text-sm rounded-lg outline-none focus:border-green-700 block w-full p-2.5" />
+                        <input onChange={e => setIntitule(e.target.value)} type="text" id="intitule" className="bg-gray-50 border border-gray-fill text-gray-900 text-sm rounded-lg outline-none focus:border-green-700 block w-full p-2.5" required/>
                     </div>
                     <hr className='w-full h-0.25 bg-gray-100' />
                     <div className="p-2 w-full">
                         <label htmlFor="objectif" className="block mb-2 text-base font-bold text-gray-900">Objectif</label>
-                        <input onChange={e => setObjectif(e.target.value)} type="text" id="objectif" className="bg-gray-50 border border-gray-fill text-gray-900 text-sm rounded-lg outline-none focus:border-green-700 block w-full p-2.5" />
+                        <input onChange={e => setObjectif(e.target.value)} type="text" id="objectif" className="bg-gray-50 border border-gray-fill text-gray-900 text-sm rounded-lg outline-none focus:border-green-700 block w-full p-2.5" required/>
                     </div>
                     <hr className='w-full h-0.25 bg-gray-100' />
                     <span className="self-start text-left block mb-2 text-base font-bold text-gray-900">Racontez-nous votre histoire</span>
@@ -119,7 +119,7 @@ const CreerCagnote = () => {
                         />
                     </div>
                     <hr className='w-full h-0.25 bg-gray-100' />
-                    <button type="sublit" className="w-full p-2 mt-4 border border-solid border-gray-500 text-center font-semibold text-white bg-green-700 rounded-xl transition duration-300 ease-in-out hover:text-black hover:bg-gray-200">Soumettre</button>
+                    <button disabled={description.length == 0} type="sublit" className="w-full p-2 mt-4 border border-solid border-gray-500 text-center font-semibold text-white bg-green-700 rounded-xl transition duration-300 ease-in-out hover:text-black hover:bg-gray-200">Soumettre</button>
                 </form>
             </div>
             <ToastContainer />
